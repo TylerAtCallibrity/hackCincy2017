@@ -1,6 +1,7 @@
 package com.callibrity.litbit.drink
 
 import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
 
 class DrinkService {
 
@@ -9,7 +10,7 @@ class DrinkService {
                                                                             [[name        : "Old Fashioned",
                                                                               ingredients : [
                                                                                       "Bourbon",
-                                                                                      "Orange Peel",
+                                                                                      "Orange",
                                                                                       "Bitters",
                                                                                       "Cherry",
                                                                                       "Sugar cube"
@@ -25,8 +26,8 @@ class DrinkService {
                                                                            [drinks:
                                                                                     [[name        : "Old Fashioned",
                                                                                       ingredients : [
-                                                                                              "Bourbon",
-                                                                                              "Orange Peel",
+                                                                                              "Tequila",
+                                                                                              "Orange",
                                                                                               "Bitters",
                                                                                               "Cherry",
                                                                                               "Agave Nectar"
@@ -39,7 +40,13 @@ class DrinkService {
                                                                  ])
 
 
-    static String getDrinks() {
-        return OLD_FASHIONED
+    static String getDrinks(def requestData) {
+        def slurper = new JsonSlurper()
+        def result = slurper.parseText(requestData)
+        
+        if (result.data.ingredients.contains("Bourbon")){
+            return OLD_FASHIONED
+        }
+        TEQUILA_OLD_FASHIONED
     }
 }
