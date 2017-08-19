@@ -4,5 +4,5 @@ import static spark.Spark.*
 println("Configuring server...")
 def service = new DrinkService()
 
-get '/hello', {req, resp -> 'Hello World'}
-post '/drink', {req, resp -> service.getDrink()}
+get '/hello', { req, resp -> 'Hello World' }
+post '/drink', { req, resp -> service.getDrink() }
