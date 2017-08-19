@@ -19,7 +19,7 @@ class DrinkService {
                                                                              ]]
                                                                    ],
                                                            status: "OK"
-    ])
+                                                         ])
 
     static final String TEQUILA_OLD_FASHIONED = JsonOutput.toJson([data  :
                                                                            [drinks:
@@ -36,7 +36,7 @@ class DrinkService {
                                                                                      ]]
                                                                            ],
                                                                    status: "OK"
-    ])
+                                                                 ])
 
 
     static String getDrinks() {
