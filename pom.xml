@@ -10,6 +10,7 @@
 	<modules>
 		<module>litbit-muffaletta</module>
 		<module>litbit-bartender</module>
+		<module>litbit-ui</module>
 	</modules>
 	<name>LitBit</name>
 	<description>HackCincy 2017 submission by Callibrity</description>
