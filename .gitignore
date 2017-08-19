@@ -14,6 +14,9 @@ target/
 *.iws
 *.iml
 *.ipr
+*.
+# Output dir #
+bartender/out
 
 ### NetBeans ###
 nbproject/private/
