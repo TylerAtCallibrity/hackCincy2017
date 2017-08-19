@@ -10,7 +10,7 @@
 	<artifactId>litbit-bartender</artifactId>
 
 	<name>litbit-bartender</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Backend server to grab drinks</description>
 
 	<dependencies>
 		<dependency>
