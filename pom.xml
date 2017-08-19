@@ -5,11 +5,12 @@
 
 	<groupId>com.callibrity.litbit</groupId>
 	<artifactId>litbit-main</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>litbit-muffaletta</module>
 		<module>litbit-bartender</module>
+		<module>litbit-ui</module>
 	</modules>
 	<name>LitBit</name>
 	<description>HackCincy 2017 submission by Callibrity</description>
