@@ -68,6 +68,7 @@
 							<keepDependenciesWithProvidedScope>true</keepDependenciesWithProvidedScope>
 							<minimizeJar>false</minimizeJar>
 							<promoteTransitiveDependencies>true</promoteTransitiveDependencies>
+							<createDependencyReducedPom>false</createDependencyReducedPom>
 						</configuration>
 					</execution>
 				</executions>
