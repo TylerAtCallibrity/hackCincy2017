@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.callibrity.litbit</groupId>
 		<artifactId>litbit-main</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>litbit-mysql</artifactId>
 	<build>

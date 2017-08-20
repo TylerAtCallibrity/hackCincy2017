@@ -9,8 +9,7 @@ class DrinkService {
 
     static logger = new Slf4jLog()
 
-    static final String DATABASE_URL = "jdbc:mysql://localhost:3307/drinks"
-    static final String DATABASE_PORT = 3307
+    static final String DATABASE_URL = "jdbc:mysql://172.28.1.3:3306/drinks?useSSL=false"
     static final String DATABASE_USERNAME = "root"
     static final String DATABASE_PASSWORD = "root"
 

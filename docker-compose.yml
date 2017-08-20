@@ -6,9 +6,11 @@ services:
    depends_on:
      - db
    ports:
-     - "4567:4567"
+     - 4567:4567
    networks:
-      - demo
+     testing_net:
+       ipv4_address: 172.28.1.5
+
 
   ui:
    build: ./litbit-ui
@@ -16,21 +18,26 @@ services:
    depends_on:
      - bartender
    ports:
-     -  "8080:80"
+     - 8080:80
    networks:
-      - demo
+     testing_net:
+       ipv4_address: 172.28.1.2
 
-  db:
+  db: 
     build: ./litbit-mysql
     image: litbit-mysql:snapshot
     ports:
-      - "3307:3306"
+      - 3307:3306
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      MYSQL_DATABASE: 'drinks'
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: drinks
     networks:
-      - demo
+      testing_net:
+        ipv4_address: 172.28.1.3
 
 networks:
-  demo:
-    driver: bridge
+  testing_net:
+      ipam:
+          driver: default
+          config:
+            - subnet: 172.28.0.0/16
