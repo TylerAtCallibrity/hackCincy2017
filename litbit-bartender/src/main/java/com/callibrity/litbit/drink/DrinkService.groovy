@@ -41,9 +41,12 @@ class DrinkService {
 
 
     static String getDrinks(def requestData) {
+        if (!requestData){
+            return JsonOutput.toJson([data: [], status: "Fail", failureReason: "Request data cannot be null"])
+        }
         def slurper = new JsonSlurper()
         def result = slurper.parseText(requestData)
-        
+
         if (result.data.ingredients.contains("Bourbon")){
             return OLD_FASHIONED
         }
