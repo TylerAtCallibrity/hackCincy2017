@@ -2,6 +2,7 @@ version: '2'
 services:
   bartender:
    build: ./litbit-bartender
+   image: litbit-bartender:snapshot
    depends_on:
      - db
    ports:
@@ -11,6 +12,7 @@ services:
 
   ui:
    build: ./litbit-ui
+   image: litbit-ui:snapshot
    depends_on:
      - bartender
    ports:
@@ -20,6 +22,7 @@ services:
 
   db:
     build: ./litbit-mysql
+    image: litbit-mysql:snapshot
     ports:
       - "3306:3306"
     environment:
