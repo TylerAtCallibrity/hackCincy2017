@@ -36,7 +36,16 @@ class DrinkServiceTest {
     @Test
     void should_handle_null(){
         def resp = slurper.parseText(drinkService.getDrinks(null))
-        assert resp.status == "Fail"
+        assert resp.status && resp.status == "Fail"
         assert resp.failureReason && resp.failureReason == "Request data cannot be null"
+    }
+
+    @Test
+    void should_handle_bad_request(){
+        def reqData = JsonOutput.toJson([authorization: "This iz tyrone"])
+        def resp = slurper.parseText(drinkService.getDrinks(reqData))
+
+        assert resp.status && resp.status == "Fail"
+        assert resp.failureReason && resp.failureReason == "Unable to find your drinks; please try again."
     }
 }
