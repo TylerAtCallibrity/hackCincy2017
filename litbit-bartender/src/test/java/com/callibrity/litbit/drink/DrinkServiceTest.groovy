@@ -4,7 +4,6 @@ import groovy.json.JsonOutput
 import groovy.json.JsonSlurper;
 import org.junit.Before
 import org.junit.Test
-import org.junit.internal.runners.statements.ExpectException
 
 class DrinkServiceTest {
     def drinkService
