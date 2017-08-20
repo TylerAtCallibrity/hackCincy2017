@@ -4,7 +4,6 @@ import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import groovy.sql.Sql
 import org.eclipse.jetty.util.log.Slf4jLog
-import com.mysql.jdbc.*
 
 class DrinkService {
 
@@ -13,7 +12,7 @@ class DrinkService {
     static final String DATABASE_URL = "jdbc:mysql://localhost:3307/drinks"
     static final String DATABASE_PORT = 3307
     static final String DATABASE_USERNAME = "root"
-    static final String DATABASE_PASSWORD= "root"
+    static final String DATABASE_PASSWORD = "root"
 
     static final String OLD_FASHIONED = JsonOutput.toJson([data  :
                                                                    [drinks:
@@ -30,7 +29,7 @@ class DrinkService {
                                                                              ]]
                                                                    ],
                                                            status: "OK"
-                                                         ])
+    ])
 
     static final String TEQUILA_OLD_FASHIONED = JsonOutput.toJson([data  :
                                                                            [drinks:
@@ -47,19 +46,19 @@ class DrinkService {
                                                                                      ]]
                                                                            ],
                                                                    status: "OK"
-                                                                 ])
+    ])
 
-    static final String DUMMY_REQUEST = JsonOutput.toJson([data :
-                                                            [ingredients : [
-                                                                    "Orange juice",
-                                                                    "cranberry juice",
-                                                                    "vodka",
-                                                            ]]
+    static final String DUMMY_REQUEST = JsonOutput.toJson([data:
+                                                                   [ingredients: [
+                                                                           "Orange juice",
+                                                                           "cranberry juice",
+                                                                           "vodka",
+                                                                   ]]
     ])
 
 
     static String getDrinks(def requestData) {
-        if (!requestData){
+        if (!requestData) {
             return JsonOutput.toJson([data: [], status: "Fail", failureReason: "Request data cannot be null"])
         }
         try {
@@ -73,15 +72,15 @@ class DrinkService {
                         FROM drinks_ingredients di
                         WHERE di.drink_id = d.drink_id AND
                         NOT FIND_IN_SET(di.ingredient_id, (select GROUP_CONCAT(ingredient_id) from ingredients where ingredient_name like '""" + result.data.ingredients[0].toLowerCase() + "' "
-            for (def i = 1; i < result.data.ingredients.size; i++){
+            for (def i = 1; i < result.data.ingredients.size; i++) {
                 query += "OR ingredient_name LIKE '${result.data.ingredients[i].toLowerCase()}' "
             }
             query += '))) < 1;'
 
-            def jsonOutput = [data : [drinks : [:]], status: 'OK']
+            def jsonOutput = [data: [drinks: [:]], status: 'OK']
             println("TWRR >>>> query=${query}")
             def drinks = [[:]]
-            sql.eachRow(query){ row ->
+            sql.eachRow(query) { row ->
                 println "Row: drink_id = ${row.drink_id} and drink_name = ${row.drink_name} and drink_instructions = ${row.description}"
                 drinks.add(([name: row.drink_name, instructions: row.description]))
             }
@@ -90,7 +89,7 @@ class DrinkService {
             sql.close()
 
         }
-        catch (Exception e){
+        catch (Exception e) {
             logger.warn("Encountered an error while attempting to fetch drinks ${e.printStackTrace()}")
             return JsonOutput.toJson([data: [], status: "Fail", failureReason: "Unable to find your drinks; please try again."])
         }
