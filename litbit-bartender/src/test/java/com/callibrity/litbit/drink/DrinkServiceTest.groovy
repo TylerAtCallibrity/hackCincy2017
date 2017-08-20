@@ -12,11 +12,9 @@ class DrinkServiceTest {
     final String OLD_FASHIONED_JSON_STRING_RESP = '{"data":{"drinks":[{"name":"Old Fashioned","ingredients":["Bourbon","Orange","Bitters","Cherry","Sugar cube"],"instructions":"Twist the orange peel to release orange oils; add ice, cherry, orange peel, bitters, and sugar cube into glass muddle them together; pour bourbon into glass mix with bar spoon; strain over ice"}]},"status":"OK"}'
     final String DUMMY_REQUEST = JsonOutput.toJson([data :
                                                         [ingredients : [
-                                                                "Bourbon",
-                                                                "Orange",
-                                                                "Bitters",
-                                                                "Cherry",
-                                                                "Sugar cube"
+                                                                "cranberry juice",
+                                                                "orange juice",
+                                                                "vodka"
                                                         ]]
                                                     ])
 
@@ -47,4 +45,15 @@ class DrinkServiceTest {
         assert resp.status && resp.status == "Fail"
         assert resp.failureReason && resp.failureReason == "Unable to find your drinks; please try again."
     }
+
+    @Test
+    void should_call_db(){
+        drinkService.callDB()
+    }
+
+    @Test
+    void should_print(){
+        println(DUMMY_REQUEST)
+    }
+
 }

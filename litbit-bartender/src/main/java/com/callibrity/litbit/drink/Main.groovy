@@ -19,8 +19,7 @@ class Main {
                 service.getDrinks(req.body())
             }
             catch (Exception e) {
-                println(
-                        logger.warn("Caught a fatal error while trying to process request; request=${req.raw()} stack=${e.printStackTrace()}"))
+                logger.warn("Caught a fatal error while trying to process request; request=${req.raw()} stack=${e.printStackTrace()}")
             }
 
         }
