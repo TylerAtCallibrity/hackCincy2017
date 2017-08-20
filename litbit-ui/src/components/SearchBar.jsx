@@ -1,20 +1,21 @@
-//
-// import React from 'react';
-// import List, {
-//     ListItem,
-//     ListItemText,
-// } from 'material-ui/List';
-// import Card, { CardHeader, CardContent } from 'material-ui/Card';
-// import Grid from 'material-ui/Grid';
-// import Typography from 'material-ui/Typography';
-// import PropTypes from 'prop-types';
-// import Autosuggest from 'react-autosuggest';
-// import TextField from 'material-ui/TextField';
-// import Paper from 'material-ui/Paper';
-// import { MenuItem } from 'material-ui/Menu';
+
+import React from 'react';
+import List, {
+    ListItem,
+    ListItemText,
+} from 'material-ui/List';
+import Card, { CardContent, CardActions } from 'material-ui/Card';
+import Grid from 'material-ui/Grid';
+import Typography from 'material-ui/Typography';
+import PropTypes from 'prop-types';
+import Autosuggest from 'react-autosuggest';
+import TextField from 'material-ui/TextField';
+import Button from 'material-ui/Button';
+import Paper from 'material-ui/Paper';
+import { MenuItem } from 'material-ui/Menu';
+import { withStyles } from 'material-ui/styles';
 // import match from 'autosuggest-highlight/match';
 // import parse from 'autosuggest-highlight/parse';
-// import { withStyles } from 'material-ui/styles';
 //
 // const suggestions = [
 //     { label: 'Afghanistan' },
@@ -152,57 +153,52 @@
 // });
 //
 // var classes;
-//
-// export default class DrinkList extends React.Component {
-//
-//     state = {
-//         value: '',
-//         suggestions: [],
-//     };
-//
-//     handleSuggestionsFetchRequested = ({ value }) => {
-//         this.setState({
-//             suggestions: getSuggestions(value),
-//         });
-//     };
-//
-//     handleSuggestionsClearRequested = () => {
-//         this.setState({
-//             suggestions: [],
-//         });
-//     };
-//
-//     handleChange = (event, { newValue }) => {
-//         this.setState({
-//             value: newValue,
-//         });
-//     };
-//
-//     render() {
-//
-//         return (
-//             <Grid item xs={6} md={4}>
-//                 <Card>
-//                     <CardContent>
-//                         <Autosuggest
-//                             renderInputComponent={renderInput}
-//                             suggestions={this.state.suggestions}
-//                             onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
-//                             onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
-//                             renderSuggestionsContainer={renderSuggestionsContainer}
-//                             getSuggestionValue={getSuggestionValue}
-//                             renderSuggestion={renderSuggestion}
-//                             inputProps={{
-//                                 autoFocus: true,
-//                                 classes,
-//                                 placeholder: 'Search a country (start with a)',
-//                                 value: this.state.value,
-//                                 onChange: this.handleChange,
-//                             }}
-//                         />
-//                     </CardContent>
-//                 </Card>
-//             </Grid>
-//         );
-//     }
-// }
+
+export default class DrinkList extends React.Component {
+
+    // state = {
+    //     value: '',
+    //     suggestions: [],
+    // };
+    //
+    // handleSuggestionsFetchRequested = ({ value }) => {
+    //     this.setState({
+    //         suggestions: getSuggestions(value),
+    //     });
+    // };
+    //
+    // handleSuggestionsClearRequested = () => {
+    //     this.setState({
+    //         suggestions: [],
+    //     });
+    // };
+    //
+    // handleChange = (event, { newValue }) => {
+    //     this.setState({
+    //         value: newValue,
+    //     });
+    // };
+
+    render() {
+
+        return (
+            <Grid item xs={6} md={4}>
+                <Card>
+                    <CardContent>
+                        <TextField
+                            id="Ingredient"
+                            label="New Ingredient"
+                            InputProps={{ placeholder: 'Enter ingredient name here' }}
+                            helperText="Add new ingredients to your mix!"
+                            fullWidth
+                            margin="normal"
+                        />
+                    </CardContent>
+                    <CardActions>
+                        <Button  raised color="primary">Add</Button>
+                    </CardActions>
+                </Card>
+            </Grid>
+        );
+    }
+}
