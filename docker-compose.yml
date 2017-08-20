@@ -1,0 +1,33 @@
+version: '2'
+services:
+  bartender:
+   build: ./litbit-bartender
+   depends_on:
+     - db
+   ports:
+     - "4567:4567"
+   networks:
+      - demo
+
+  ui:
+   build: ./litbit-ui
+   depends_on:
+     - bartender
+   ports:
+     -  "8080:80"
+   networks:
+      - demo
+
+  db:
+    build: ./litbit-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: 'drinks'
+    networks:
+      - demo
+
+networks:
+  demo:
+    driver: bridge
