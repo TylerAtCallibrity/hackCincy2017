@@ -11,7 +11,6 @@ import Card, { CardHeader, CardContent } from 'material-ui/Card';
 
 export default class DrinkList extends React.Component {
     render() {
-        var thingsThatGetYouLit = ['Vodka', 'Gin', 'Tequila'];
 
         return (
             <Grid item xs={6} md={4}>
@@ -20,7 +19,7 @@ export default class DrinkList extends React.Component {
                     <CardContent>
                         <div>
                             <List>
-                                {thingsThatGetYouLit.map((lighter) =>
+                                {this.props.ingredients.map((lighter) =>
                                     <ListItem>
                                         <ListItemText
                                             primary={lighter}

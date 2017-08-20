@@ -9,13 +9,15 @@ import Typography from 'material-ui/Typography'
 export default class App extends React.Component {
     render() {
         //<div style={{textAlign: 'center'}}>
+        var thingsThatGetYouLit = ['vodka', 'orange juice', 'cranberry juice'];
+        
         return (
             <div>
                 <h1>LitBit</h1>
                 <Grid container="true">
-                    <SearchBar/>
-                    <DrinkList/>
-                    <MixedDrink/>
+                    <SearchBar ingredients={thingsThatGetYouLit}/>
+                    <DrinkList ingredients={thingsThatGetYouLit}/>
+                    <MixedDrink ingredients={thingsThatGetYouLit}/>
                 </Grid>
             </div>
         );
